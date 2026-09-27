@@ -83,14 +83,23 @@ You should see: `nothing to commit, working tree clean`
 
  The starter code as a ZIP or via a shared GitHub link.
 
-**shares a ZIP:**
+**Option A — Trainer shares a ZIP:**
 ```
 1. Extract the ZIP to your Desktop
 2. Copy all files from the extracted folder into ai-intake-cop\
 3. Do NOT overwrite the .git folder
 ```
 
-After, verify:
+**Option B — Trainer shares a GitHub URL:**
+```bash
+# Add the starter as a remote, then merge it into your main branch
+git remote add starter https://github.com/TRAINER-USERNAME/ai-intake-cop-starter.git
+git fetch starter
+git merge starter/main --allow-unrelated-histories -X theirs -m "Add workshop starter files"
+```
+> Your repo already has its own `main` branch and README (from Step 0C), so `--allow-unrelated-histories` joins the two histories and `-X theirs` keeps the starter's version of any file that clashes (like `README.md`). With Option B the files are already committed, so in Step 0F `git commit` may say "nothing to commit". That's fine, just run `git push origin main`.
+
+After either option, verify:
 ```bash
 ls          # (Git Bash) or dir (Command Prompt)
 # You should see: main.py  requirements.txt  docker-compose.yml  01-guardrails/  etc.
@@ -169,14 +178,7 @@ For now, leave everything as-is. You'll fill in Google credentials in Lab 2 and 
 ```bash
 docker compose up -d
 ```
-```
-What docker compose up -d does
 
-docker compose reads your docker-compose.yml file and manages multiple containers as one unit.
-
-up — create and start all the services defined in the file
--d — "detached" mode, meaning containers run in the background (your terminal is free)
-```
 First run downloads ~4 GB of images. **This takes 5–15 minutes on a fresh laptop.** While it downloads, read ahead in the lab cards.
 
 Watch the progress:
