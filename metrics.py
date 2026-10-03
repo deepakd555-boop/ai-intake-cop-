@@ -49,8 +49,8 @@ async def metrics_summary():
     🔬 LAB 5 — Summary metrics for the React dashboard.
     Returns current Prometheus gauge values and counters as JSON.
     """
-    from 04-budget-alerts.router import TOKEN_LEDGER, BUDGET_LIMIT
-    from 03-background-tasks.router import JOB_STORE, JOB_LOG
+    from alerts.router import TOKEN_LEDGER, BUDGET_LIMIT
+    from background.router import JOB_STORE, JOB_LOG
 
     done = sum(1 for j in JOB_STORE.values() if j["status"] == "done")
     blocked = sum(1 for j in JOB_STORE.values() if j["status"] == "blocked")
